@@ -1,7 +1,7 @@
 import {
   CloudRain, Shield, Zap, Brain, MapPin, TrendingUp, AlertTriangle,
   Smartphone, CreditCard, BarChart3, ChevronRight, Menu, X,
-  CheckCircle, Activity, Wifi, Star
+  CheckCircle, Wifi, Star
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -178,48 +178,6 @@ function PersonaSection() {
   );
 }
 
-/* ─── How It Works (11 steps) ─── */
-function HowItWorks() {
-  const steps = [
-    { icon: Smartphone, title: "Onboarding", desc: "Rider enters location, platforms, working hours & average income." },
-    { icon: CloudRain, title: "Data Collection", desc: "Open-Meteo weather forecast + historical order patterns collected." },
-    { icon: Brain, title: "AI Risk Prediction", desc: "XGBoost predicts weekly disruption risk and potential disrupted hours." },
-    { icon: CreditCard, title: "Weekly Premium", desc: "Base ₹89 + dynamic risk component (₹40–₹85). Fixed every Monday. 48-hr lock-in." },
-    { icon: CheckCircle, title: "Policy Activation", desc: "Rider pays the weekly premium — policy is locked in for the week." },
-    { icon: AlertTriangle, title: "Predictive Alerts", desc: "48-hour advance warnings about high-risk rain periods." },
-    { icon: Activity, title: "Real-Time Monitoring", desc: "Tracks weather changes and rider activity via sensor data." },
-    { icon: Zap, title: "Disruption Detection", desc: "Identifies Zero-Order Hours and Unrideable Conditions due to rain/flood." },
-    { icon: Shield, title: "Adaptive Protection", desc: "Compensation adjusts intelligently based on disruption severity within weekly limit." },
-    { icon: TrendingUp, title: "Income Gap Calc", desc: "Expected – Actual earnings gap calculated, capped at ₹3,000/week." },
-    { icon: Star, title: "Fraud Validation", desc: "8-signal multi-layer check including Rider Reliability Score." },
-    { icon: Zap, title: "Instant Payout", desc: "Approved amount credited directly to UPI." },
-  ];
-  return (
-    <RevealSection id="how-it-works" className="py-24 md:py-32 bg-background">
-      <div className="container">
-        <div className="text-center max-w-xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">🔄 Complete System Flow</h2>
-          <p className="mt-4 text-muted-foreground text-pretty">From onboarding to instant payout — fully automated, AI-driven income protection in 12 steps.</p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <div key={step.title} className="group relative p-5 rounded-xl bg-card border shadow-sm hover:shadow-lg transition-shadow" style={{ animationDelay: `${i * 60}ms` }}>
-                <div className="absolute -top-3 -left-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-primary-foreground shadow-md">
-                  {i + 1}
-                </div>
-                <Icon className="h-7 w-7 text-primary mb-3 mt-2" />
-                <h3 className="font-semibold text-sm mb-1">{step.title}</h3>
-                <p className="text-xs text-muted-foreground text-pretty">{step.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </RevealSection>
-  );
-}
 
 /* ─── Features ─── */
 function Features() {
@@ -506,7 +464,6 @@ export default function LandingPage() {
       <Navbar />
       <Hero />
       <PersonaSection />
-      <HowItWorks />
       <PremiumModel />
       <Features />
       <DashboardPreview />
