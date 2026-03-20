@@ -1,4 +1,8 @@
-import { CloudRain, Shield, Zap, Brain, MapPin, TrendingUp, AlertTriangle, Smartphone, CreditCard, BarChart3, ChevronRight, Menu, X } from "lucide-react";
+import {
+  CloudRain, Shield, Zap, Brain, MapPin, TrendingUp, AlertTriangle,
+  Smartphone, CreditCard, BarChart3, ChevronRight, Menu, X,
+  CheckCircle, Activity, Wifi, Star
+} from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-rider.jpg";
@@ -36,9 +40,10 @@ function Navbar() {
           <span className="font-display font-bold text-lg text-foreground">RainGuard<span className="text-primary"> AI</span></span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
+          <a href="#persona" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Problem</a>
           <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">How It Works</a>
           <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</a>
-          <a href="#dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Dashboard</a>
+          <a href="#tech" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Tech Stack</a>
           <Link to="/dashboard">
             <Button size="sm">Rider Login</Button>
           </Link>
@@ -49,9 +54,10 @@ function Navbar() {
       </div>
       {open && (
         <div className="md:hidden border-t bg-background p-4 space-y-3">
+          <a href="#persona" className="block text-sm" onClick={() => setOpen(false)}>Problem</a>
           <a href="#how-it-works" className="block text-sm" onClick={() => setOpen(false)}>How It Works</a>
           <a href="#features" className="block text-sm" onClick={() => setOpen(false)}>Features</a>
-          <a href="#dashboard" className="block text-sm" onClick={() => setOpen(false)}>Dashboard</a>
+          <a href="#tech" className="block text-sm" onClick={() => setOpen(false)}>Tech Stack</a>
           <Link to="/dashboard"><Button className="w-full" size="sm">Rider Login</Button></Link>
         </div>
       )}
@@ -78,7 +84,7 @@ function Hero() {
             Securing income.
           </h1>
           <p className="text-lg text-primary-foreground/75 max-w-lg text-pretty animate-reveal-up" style={{ animationDelay: "200ms" }}>
-            Kerala's delivery riders lose 25–40% of weekly earnings during monsoons. RainGuard AI forecasts disruptions and provides intelligent, adaptive income protection — so you earn even when the rain stops orders.
+            Kerala's Zomato, Swiggy & Zepto riders lose 25–40% of weekly earnings during the monsoon. RainGuard AI forecasts disruptions and provides intelligent, adaptive income protection — so you earn even when the rain stops orders.
           </p>
           <div className="flex flex-wrap gap-4 animate-reveal-up" style={{ animationDelay: "300ms" }}>
             <Link to="/dashboard">
@@ -110,7 +116,6 @@ function Hero() {
   );
 }
 
-/* ─── Section wrapper with reveal ─── */
 function RevealSection({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
   const { ref, isVisible } = useScrollReveal();
   return (
@@ -120,32 +125,93 @@ function RevealSection({ children, className = "", id }: { children: React.React
   );
 }
 
-/* ─── How It Works ─── */
+/* ─── Persona & Problem ─── */
+function PersonaSection() {
+  return (
+    <RevealSection id="persona" className="py-24 md:py-32 bg-muted/50">
+      <div className="container">
+        <div className="text-center max-w-xl mx-auto mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">👨‍🍳 Meet Rahul — Kochi Delivery Rider</h2>
+          <p className="mt-4 text-muted-foreground">The persona behind RainGuard AI. Real problem. Real loss. No protection.</p>
+        </div>
+        <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-6">
+          {/* Profile */}
+          <div className="rounded-2xl border bg-card p-6 space-y-4">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-bold text-primary-foreground">R</div>
+              <div>
+                <div className="text-xl font-bold">Rahul</div>
+                <div className="text-sm text-muted-foreground">Delivery Rider · Kochi, Kerala</div>
+              </div>
+            </div>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between border-b pb-2"><span className="text-muted-foreground">Works</span><span className="font-medium">10 AM – 8 PM</span></div>
+              <div className="flex justify-between border-b pb-2"><span className="text-muted-foreground">Daily Earnings</span><span className="font-medium">₹600/day</span></div>
+              <div className="flex justify-between border-b pb-2"><span className="text-muted-foreground">Weekly Earnings</span><span className="font-medium">₹4,800/week</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">Platforms</span><span className="font-medium">Zomato, Swiggy, Zepto</span></div>
+            </div>
+          </div>
+          {/* Problem during monsoon */}
+          <div className="rounded-2xl border border-destructive/20 bg-destructive/5 p-6 space-y-4">
+            <div className="font-bold text-destructive text-lg flex items-center gap-2"><AlertTriangle className="h-5 w-5" /> During Monsoon</div>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-background border">
+                <span className="text-xl">🌧️</span>
+                <div><div className="font-medium">Zero Orders</div><div className="text-muted-foreground text-xs">Stays online for hours — no demand due to heavy rain</div></div>
+              </div>
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-background border">
+                <span className="text-xl">🌊</span>
+                <div><div className="font-medium">Unrideable Conditions</div><div className="text-muted-foreground text-xs">Flooded roads — cannot deliver safely</div></div>
+              </div>
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-destructive/10 border border-destructive/20">
+                <span className="text-xl">💸</span>
+                <div>
+                  <div className="font-medium text-destructive">Income Loss: ₹400/day</div>
+                  <div className="text-muted-foreground text-xs">Earns ₹200 instead of ₹600 — ❌ No safety net exists</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </RevealSection>
+  );
+}
+
+/* ─── How It Works (11 steps) ─── */
 function HowItWorks() {
   const steps = [
-    { icon: Smartphone, title: "Onboard in 2 min", desc: "Enter your zone, platform (Zomato/Swiggy/Zepto), working hours & average weekly income." },
-    { icon: Brain, title: "AI Predicts Risk", desc: "Our ML model forecasts disruption hours using Open-Meteo weather data & historical order patterns." },
-    { icon: CreditCard, title: "Pay Weekly Premium", desc: "₹89 base + risk component (₹40–₹85). Calculated every Monday. 48-hour lock-in prevents gaming." },
-    { icon: Zap, title: "Get Instant Payout", desc: "When disruption hits, adaptive compensation calculates automatically. Approved payouts go straight to UPI." },
+    { icon: Smartphone, title: "Onboarding", desc: "Rider enters location, platforms, working hours & average income." },
+    { icon: CloudRain, title: "Data Collection", desc: "Open-Meteo weather forecast + historical order patterns collected." },
+    { icon: Brain, title: "AI Risk Prediction", desc: "XGBoost predicts weekly disruption risk and potential disrupted hours." },
+    { icon: CreditCard, title: "Weekly Premium", desc: "Base ₹89 + dynamic risk component (₹40–₹85). Fixed every Monday. 48-hr lock-in." },
+    { icon: CheckCircle, title: "Policy Activation", desc: "Rider pays the weekly premium — policy is locked in for the week." },
+    { icon: AlertTriangle, title: "Predictive Alerts", desc: "48-hour advance warnings about high-risk rain periods." },
+    { icon: Activity, title: "Real-Time Monitoring", desc: "Tracks weather changes and rider activity via sensor data." },
+    { icon: Zap, title: "Disruption Detection", desc: "Identifies Zero-Order Hours and Unrideable Conditions due to rain/flood." },
+    { icon: Shield, title: "Adaptive Protection", desc: "Compensation adjusts intelligently based on disruption severity within weekly limit." },
+    { icon: TrendingUp, title: "Income Gap Calc", desc: "Expected – Actual earnings gap calculated, capped at ₹3,000/week." },
+    { icon: Star, title: "Fraud Validation", desc: "8-signal multi-layer check including Rider Reliability Score." },
+    { icon: Zap, title: "Instant Payout", desc: "Approved amount credited directly to UPI." },
   ];
   return (
     <RevealSection id="how-it-works" className="py-24 md:py-32 bg-background">
       <div className="container">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">How RainGuard AI Works</h2>
-          <p className="mt-4 text-muted-foreground text-pretty">From onboarding to instant payout — fully automated, AI-driven protection in four steps.</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">🔄 Complete System Flow</h2>
+          <p className="mt-4 text-muted-foreground text-pretty">From onboarding to instant payout — fully automated, AI-driven income protection in 12 steps.</p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {steps.map((step, i) => {
             const Icon = step.icon;
             return (
-              <div key={step.title} className="group relative p-6 rounded-xl bg-card border shadow-sm hover:shadow-lg transition-shadow duration-[var(--duration-state)]" style={{ animationDelay: `${i * 80}ms` }}>
-                <div className="absolute -top-3 -left-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-sm font-bold text-primary-foreground shadow-md">
+              <div key={step.title} className="group relative p-5 rounded-xl bg-card border shadow-sm hover:shadow-lg transition-shadow" style={{ animationDelay: `${i * 60}ms` }}>
+                <div className="absolute -top-3 -left-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-primary-foreground shadow-md">
                   {i + 1}
                 </div>
-                <Icon className="h-8 w-8 text-primary mb-4 mt-2" />
-                <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground text-pretty">{step.desc}</p>
+                <Icon className="h-7 w-7 text-primary mb-3 mt-2" />
+                <h3 className="font-semibold text-sm mb-1">{step.title}</h3>
+                <p className="text-xs text-muted-foreground text-pretty">{step.desc}</p>
               </div>
             );
           })}
@@ -158,33 +224,138 @@ function HowItWorks() {
 /* ─── Features ─── */
 function Features() {
   const features = [
-    { icon: MapPin, title: "Hyperlocal H3 Hex-Grid", desc: "Zone-level precision using Uber's H3 spatial indexing. Predictions are specific to your riding zone, not generic city-wide." },
-    { icon: TrendingUp, title: "Adaptive Compensation", desc: "Payouts adjust intelligently based on disruption severity — zero-order hours and unrideable conditions both count." },
-    { icon: AlertTriangle, title: "48-Hour Lock-In", desc: "Premiums are set every Monday. No last-minute buys when you see rain coming — keeping the pool fair for everyone." },
-    { icon: Shield, title: "Multi-Layer Fraud Defense", desc: "Accelerometer checks, GPS validation, weather reality matching, and Rider Reliability Score block coordinated spoofing." },
-    { icon: BarChart3, title: "Income Gap Calculation", desc: "We compare your expected earnings vs actual, capping compensation at ₹3,000/week for fair, transparent coverage." },
-    { icon: CloudRain, title: "Predictive Alerts", desc: "Get 48-hour advance warnings about high-risk weather periods so you can plan your week better." },
+    { icon: MapPin, title: "Hyperlocal H3 Hex-Grid", desc: "Zone-level precision using Uber's H3 spatial indexing. Predictions are specific to your riding hex-zone, not generic city-wide." },
+    { icon: Shield, title: "Adaptive Income Protection", desc: "Compensation adjusts based on Zero-Order Hours + Unrideable Conditions severity. Always stays within your ₹3,000/week limit." },
+    { icon: AlertTriangle, title: "48-Hour Lock-In", desc: "Premiums set every Monday. No last-minute buying when you see rain — keeps the risk pool fair." },
+    { icon: Brain, title: "AI Risk Prediction (XGBoost)", desc: "Forecasts weekly disruption hours using Open-Meteo data and historical order patterns from your zone." },
+    { icon: BarChart3, title: "Income Gap Calculation", desc: "Expected vs Actual earnings formula with partial compensation capped at ₹3,000/week." },
+    { icon: Wifi, title: "8-Signal Fraud Detection", desc: "Accelerometer, GPS, app activity, weather reality, mock location check, network signals, reliability score, and zone validation." },
+    { icon: Activity, title: "Disruption Modeling", desc: "Models real earning disruptions — both Zero-Order Hours (no demand) and Unrideable Conditions (flooded roads)." },
+    { icon: Zap, title: "Instant UPI Payout", desc: "When fraud check passes, 100% approved or 50% provisional payout credited to UPI instantly." },
+    { icon: CloudRain, title: "Predictive Alerts", desc: "Get 48-hour advance warnings about high-risk weather periods so you can plan your week." },
   ];
   return (
     <RevealSection id="features" className="py-24 md:py-32 bg-muted/50">
       <div className="container">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">Built for Kerala's Monsoon Reality</h2>
-          <p className="mt-4 text-muted-foreground text-pretty">Every feature is designed around the specific challenges delivery riders face during Kerala's intense monsoon season.</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">🔥 Key Features</h2>
+          <p className="mt-4 text-muted-foreground text-pretty">Every feature built for the specific challenges Kerala riders face during the monsoon season.</p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
-              <div key={f.title} className="p-6 rounded-xl bg-card border shadow-sm hover:shadow-md transition-shadow duration-[var(--duration-state)]" style={{ animationDelay: `${i * 60}ms` }}>
-                <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center mb-4">
+              <div key={f.title} className="p-5 rounded-xl bg-card border shadow-sm hover:shadow-md transition-shadow" style={{ animationDelay: `${i * 60}ms` }}>
+                <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center mb-3">
                   <Icon className="h-5 w-5 text-accent-foreground" />
                 </div>
-                <h3 className="font-semibold mb-2">{f.title}</h3>
-                <p className="text-sm text-muted-foreground text-pretty">{f.desc}</p>
+                <h3 className="font-semibold mb-1 text-sm">{f.title}</h3>
+                <p className="text-xs text-muted-foreground text-pretty">{f.desc}</p>
               </div>
             );
           })}
+        </div>
+      </div>
+    </RevealSection>
+  );
+}
+
+/* ─── Premium Model ─── */
+function PremiumModel() {
+  return (
+    <RevealSection className="py-24 md:py-32 bg-background">
+      <div className="container">
+        <div className="text-center max-w-xl mx-auto mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">💰 Weekly Premium Model</h2>
+          <p className="mt-4 text-muted-foreground">Transparent pricing that matches the rider's weekly earning cycle.</p>
+        </div>
+        <div className="max-w-3xl mx-auto grid sm:grid-cols-3 gap-5">
+          <div className="rounded-xl border bg-card p-5 text-center">
+            <div className="text-3xl font-bold text-primary">₹89</div>
+            <div className="text-sm font-medium mt-1">Base Premium</div>
+            <div className="text-xs text-muted-foreground mt-2">Fixed component, same for all riders weekly</div>
+          </div>
+          <div className="rounded-xl border bg-secondary/10 border-secondary/30 p-5 text-center">
+            <div className="text-3xl font-bold text-secondary">₹40–₹85</div>
+            <div className="text-sm font-medium mt-1">Dynamic Risk</div>
+            <div className="text-xs text-muted-foreground mt-2">XGBoost-calculated based on your zone's forecast</div>
+          </div>
+          <div className="rounded-xl border bg-primary/5 border-primary/20 p-5 text-center">
+            <div className="text-3xl font-bold text-foreground">₹129–₹174</div>
+            <div className="text-sm font-medium mt-1">Total/ Week</div>
+            <div className="text-xs text-muted-foreground mt-2">Covers up to ₹3,000/week income protection</div>
+          </div>
+        </div>
+        <div className="max-w-3xl mx-auto mt-6 rounded-xl border bg-muted/50 p-5">
+          <div className="font-semibold text-sm mb-3">⚡ Parametric Triggers — Automatic Payout Conditions</div>
+          <div className="grid sm:grid-cols-3 gap-3 text-sm">
+            <div className="flex items-start gap-2"><span className="text-primary font-bold">1</span><span>Rainfall ≥ 15mm in 3 hours + activity drop</span></div>
+            <div className="flex items-start gap-2"><span className="text-primary font-bold">2</span><span>&gt;60% order drop in your H3 hex-grid zone</span></div>
+            <div className="flex items-start gap-2"><span className="text-primary font-bold">3</span><span>Hyperlocal flood risk making roads unrideable</span></div>
+          </div>
+        </div>
+      </div>
+    </RevealSection>
+  );
+}
+
+/* ─── Tech Stack ─── */
+function TechStack() {
+  const stack = [
+    { label: "Frontend", value: "React (Vite)", icon: "⚛️" },
+    { label: "Backend", value: "FastAPI", icon: "⚡" },
+    { label: "Database", value: "Supabase", icon: "🗄️" },
+    { label: "Weather API", value: "Open-Meteo", icon: "🌦️" },
+    { label: "ML Models", value: "XGBoost + Isolation Forest", icon: "🤖" },
+    { label: "Spatial", value: "Uber H3 Grid", icon: "🗺️" },
+    { label: "Payments", value: "Razorpay (Test Mode)", icon: "💳" },
+    { label: "Mobile (Phase 2)", value: "Flutter", icon: "📱" },
+  ];
+  return (
+    <RevealSection id="tech" className="py-24 md:py-32 bg-muted/50">
+      <div className="container">
+        <div className="text-center max-w-xl mx-auto mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">🛠️ Tech Stack</h2>
+          <p className="mt-4 text-muted-foreground">Built for rapid development, real-world reliability, and AI-first architecture.</p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {stack.map((s) => (
+            <div key={s.label} className="rounded-xl border bg-card p-4 flex items-center gap-3">
+              <span className="text-2xl">{s.icon}</span>
+              <div>
+                <div className="text-xs text-muted-foreground">{s.label}</div>
+                <div className="text-sm font-semibold">{s.value}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="max-w-3xl mx-auto mt-8 grid sm:grid-cols-3 gap-4">
+          <div className="rounded-xl border bg-card p-5">
+            <div className="font-semibold text-sm mb-2 text-primary">🤖 AI/ML Integration</div>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• XGBoost — risk prediction & premium calculation</li>
+              <li>• Isolation Forest — fraud anomaly detection</li>
+              <li>• Regression — income estimation</li>
+              <li>• scikit-learn — feature engineering pipeline</li>
+            </ul>
+          </div>
+          <div className="rounded-xl border bg-card p-5">
+            <div className="font-semibold text-sm mb-2 text-secondary">📅 Development Roadmap</div>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>✅ Phase 1: Research, design, prototype</li>
+              <li>⏳ Phase 2: Full app, weather, prediction engine</li>
+              <li>⏳ Phase 3: Fraud layer, dashboards, alerts</li>
+            </ul>
+          </div>
+          <div className="rounded-xl border bg-card p-5">
+            <div className="font-semibold text-sm mb-2 text-success">🌐 Platform Choice</div>
+            <ul className="text-xs text-muted-foreground space-y-1">
+              <li>• Web app — faster to prototype & demo</li>
+              <li>• No device dependency for hackathon</li>
+              <li>• Flutter mobile for Phase 2 production</li>
+              <li>• Real sensor data in mobile for fraud check</li>
+            </ul>
+          </div>
         </div>
       </div>
     </RevealSection>
@@ -197,42 +368,48 @@ function DashboardPreview() {
     <RevealSection id="dashboard" className="py-24 md:py-32 bg-background">
       <div className="container">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">Your Protection Dashboard</h2>
-          <p className="mt-4 text-muted-foreground text-pretty">Real-time visibility into your policy, weather forecasts, and earnings — all in one place.</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">📊 Your Protection Dashboard</h2>
+          <p className="mt-4 text-muted-foreground text-pretty">Real-time visibility into your policy, weather forecasts, earnings, and fraud validation — all in one place.</p>
         </div>
         <div className="max-w-4xl mx-auto">
           <div className="rounded-2xl border bg-card shadow-xl overflow-hidden">
-            {/* Mock top bar */}
             <div className="bg-primary px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <CloudRain className="h-5 w-5 text-primary-foreground" />
-                <span className="font-display font-semibold text-primary-foreground text-sm">RainGuard AI — Rider Dashboard</span>
+                <span className="font-display font-semibold text-primary-foreground text-sm">RainGuard AI — Rahul's Dashboard (Kochi)</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-primary-foreground/70">
                 <div className="w-2 h-2 rounded-full bg-success animate-pulse-soft" />
                 Policy Active
               </div>
             </div>
-            {/* Mock dashboard content */}
             <div className="p-6 grid sm:grid-cols-3 gap-4">
-              <DashCard label="This Week's Premium" value="₹134" sub="Paid Mon 6:00 AM" color="primary" />
-              <DashCard label="Coverage Remaining" value="₹2,640" sub="of ₹3,000 max" color="success" />
-              <DashCard label="Risk Level" value="High" sub="Heavy rain expected Thu-Fri" color="warning" />
+              {[
+                { label: "Weekly Premium", value: "₹134", sub: "Base ₹89 + Risk ₹45", color: "text-primary" },
+                { label: "Coverage Left", value: "₹2,640", sub: "of ₹3,000 max", color: "text-success" },
+                { label: "Risk Level", value: "🔴 High", sub: "Rain ≥15mm Thu-Fri", color: "text-destructive" },
+              ].map((c) => (
+                <div key={c.label} className="rounded-xl border p-4">
+                  <div className="text-xs text-muted-foreground mb-1">{c.label}</div>
+                  <div className={`text-2xl font-bold tabular-nums ${c.color}`}>{c.value}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{c.sub}</div>
+                </div>
+              ))}
             </div>
             <div className="px-6 pb-6 grid sm:grid-cols-2 gap-4">
               <div className="rounded-xl border p-4">
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">48-Hour Weather Forecast</h4>
                 <div className="space-y-2">
                   {[
-                    { day: "Thu", rain: "32mm", risk: "High", color: "text-destructive" },
-                    { day: "Fri", rain: "28mm", risk: "High", color: "text-destructive" },
-                    { day: "Sat", rain: "8mm", risk: "Low", color: "text-success" },
-                    { day: "Sun", rain: "3mm", risk: "Low", color: "text-success" },
+                    { day: "Thu", rain: "32mm", risk: "🔴 High — Trigger Activates" },
+                    { day: "Fri", rain: "28mm", risk: "🔴 High — Trigger Activates" },
+                    { day: "Sat", rain: "8mm", risk: "🟡 Medium" },
+                    { day: "Sun", rain: "3mm", risk: "🟢 Low" },
                   ].map((r) => (
                     <div key={r.day} className="flex items-center justify-between text-sm py-1.5 border-b border-border/50 last:border-0">
                       <span className="font-medium">{r.day}</span>
                       <span className="text-muted-foreground">{r.rain}</span>
-                      <span className={`font-semibold text-xs ${r.color}`}>{r.risk}</span>
+                      <span className="text-xs font-semibold">{r.risk}</span>
                     </div>
                   ))}
                 </div>
@@ -241,9 +418,9 @@ function DashboardPreview() {
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Recent Payouts</h4>
                 <div className="space-y-2">
                   {[
-                    { date: "Mar 14", amount: "₹360", reason: "5.2 zero-order hrs" },
-                    { date: "Mar 07", amount: "₹180", reason: "2.8 zero-order hrs" },
-                    { date: "Feb 28", amount: "₹540", reason: "Unrideable + 4 hrs" },
+                    { date: "Mar 14", amount: "₹360", reason: "5.2 Zero-Order Hrs" },
+                    { date: "Mar 07", amount: "₹180", reason: "2.8 Zero-Order Hrs" },
+                    { date: "Feb 28", amount: "₹540", reason: "Unrideable + 4 Hrs" },
                   ].map((p) => (
                     <div key={p.date} className="flex items-center justify-between text-sm py-1.5 border-b border-border/50 last:border-0">
                       <span className="text-muted-foreground">{p.date}</span>
@@ -268,21 +445,6 @@ function DashboardPreview() {
   );
 }
 
-function DashCard({ label, value, sub, color }: { label: string; value: string; sub: string; color: string }) {
-  const colorMap: Record<string, string> = {
-    primary: "text-primary",
-    success: "text-success",
-    warning: "text-secondary",
-  };
-  return (
-    <div className="rounded-xl border p-4">
-      <div className="text-xs text-muted-foreground mb-1">{label}</div>
-      <div className={`text-2xl font-bold tabular-nums ${colorMap[color] || "text-foreground"}`}>{value}</div>
-      <div className="text-xs text-muted-foreground mt-1">{sub}</div>
-    </div>
-  );
-}
-
 /* ─── CTA ─── */
 function CtaSection() {
   return (
@@ -290,7 +452,7 @@ function CtaSection() {
       <RainEffect />
       <div className="container relative z-10 text-center max-w-2xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">Don't Let the Rain Wash Away Your Earnings</h2>
-        <p className="mt-4 text-primary-foreground/70 text-pretty">Join thousands of Kerala delivery riders who protect their income with AI-powered adaptive coverage. Starting at just ₹89/week.</p>
+        <p className="mt-4 text-primary-foreground/70 text-pretty">Join Kerala delivery riders who protect their income with AI-powered adaptive coverage. Starting at just ₹89/week.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link to="/dashboard">
             <Button variant="hero" size="xl">Start Protection Now</Button>
@@ -312,13 +474,13 @@ function Footer() {
               <CloudRain className="h-6 w-6 text-secondary" />
               <span className="font-display font-bold text-lg text-background">RainGuard AI</span>
             </div>
-            <p className="text-sm max-w-xs">Predictive Adaptive Income Protection for Kerala's delivery riders. A Phase 1 hackathon prototype.</p>
+            <p className="text-sm max-w-xs">Predictive Adaptive Income Protection for Kerala's delivery riders. Phase 1 hackathon prototype — March 2026.</p>
           </div>
           <div className="flex gap-12 text-sm">
             <div className="space-y-2">
               <div className="font-semibold text-background">Platform</div>
+              <a href="#persona" className="block hover:text-background transition-colors">Problem</a>
               <a href="#how-it-works" className="block hover:text-background transition-colors">How It Works</a>
-              <a href="#features" className="block hover:text-background transition-colors">Features</a>
               <Link to="/dashboard" className="block hover:text-background transition-colors">Dashboard</Link>
             </div>
             <div className="space-y-2">
@@ -330,7 +492,7 @@ function Footer() {
           </div>
         </div>
         <div className="border-t border-background/10 mt-8 pt-6 text-xs text-center">
-          © 2026 RainGuard AI. Hackathon prototype — not a licensed insurance product.
+          © 2026 RainGuard AI. Phase 1 Hackathon Prototype — Not a licensed insurance product.
         </div>
       </div>
     </footer>
@@ -343,9 +505,12 @@ export default function LandingPage() {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
+      <PersonaSection />
       <HowItWorks />
+      <PremiumModel />
       <Features />
       <DashboardPreview />
+      <TechStack />
       <CtaSection />
       <Footer />
     </div>
