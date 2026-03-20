@@ -1,7 +1,7 @@
 import {
   CloudRain, Shield, Zap, Brain, MapPin, TrendingUp, AlertTriangle,
   Smartphone, CreditCard, BarChart3, ChevronRight, Menu, X,
-  CheckCircle, Wifi, Star
+  CheckCircle, Activity, Wifi, Star
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
