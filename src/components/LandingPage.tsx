@@ -474,7 +474,7 @@ function Footer() {
               <CloudRain className="h-6 w-6 text-secondary" />
               <span className="font-display font-bold text-lg text-background">RainGuard AI</span>
             </div>
-            <p className="text-sm max-w-xs">Predictive Adaptive Income Protection for Kerala's delivery riders. Phase 1 hackathon prototype — March 2026.</p>
+            <p className="text-sm max-w-xs">Predictive Adaptive Income Protection for Kerala's delivery riders.</p>
           </div>
           <div className="flex gap-12 text-sm">
             <div className="space-y-2">
